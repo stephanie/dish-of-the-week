@@ -11,17 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131119044345) do
+ActiveRecord::Schema.define(version: 20131119044053) do
 
   create_table "dishes", force: true do |t|
     t.integer  "restaurant_id"
+    t.string   "type"
     t.string   "course"
     t.string   "dish_name"
     t.text     "dish_description"
     t.binary   "image"
     t.integer  "price"
     t.string   "blog_link"
-    t.string   "date_presented"
+    t.string   "published_on"
+    t.integer  "up_vote"
+    t.integer  "down_vote"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -35,7 +38,6 @@ ActiveRecord::Schema.define(version: 20131119044345) do
     t.string   "cuisine_type"
     t.string   "price_range"
     t.string   "menu_url"
-    t.integer  "submission_number"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -50,23 +52,8 @@ ActiveRecord::Schema.define(version: 20131119044345) do
 
   add_index "reviews", ["restaurant_id"], name: "index_reviews_on_restaurant_id"
 
-  create_table "submissions", force: true do |t|
-    t.integer  "restaurant_id"
-    t.integer  "user_id"
-    t.string   "dish_name"
-    t.text     "dish_description"
-    t.binary   "image"
-    t.integer  "price"
-    t.string   "blog_link"
-    t.string   "status"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "submissions", ["restaurant_id"], name: "index_submissions_on_restaurant_id"
-  add_index "submissions", ["user_id"], name: "index_submissions_on_user_id"
-
   create_table "users", force: true do |t|
+    t.integer  "submission_id"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
@@ -77,5 +64,7 @@ ActiveRecord::Schema.define(version: 20131119044345) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "users", ["submission_id"], name: "index_users_on_submission_id"
 
 end

@@ -5,7 +5,6 @@ restaurants = Restaurant.create([
         phone: 28505967,
         cuisine_type: "Chinese",
         price_range: "Below $40",
-        submission_number: 1,
     },
     {
         name: "22 Ships",
@@ -13,8 +12,7 @@ restaurants = Restaurant.create([
         phone: 25550722,
         cuisine_type: "Spanish",
         price_range: "$151-$300",
-        menu: "http://www.22ships.hk/menu",
-        submission_number: 1,
+        menu_url: "http://www.22ships.hk/menu",
     }
 
 ])
@@ -22,16 +20,16 @@ restaurants = Restaurant.create([
 dishes = Dish.create([
     {
         dish_name: "Beef Brisket Noodles",
-        dish_description: "A steaming bowl of ",
+        dish_description: "A steaming bowl of...",
         price: "Below $40",
-        blog_link: "",  
+        blog_link: "http://thedimsumdiaries.com/2012/08/20/kau-kee-hong-kon/",  
         restaurant: restaurants[0]
     },
     {
-        author: "Chargrilled Iberico pork and foie gras burgers",
-        dish_description: "",
+        dish_name: "Chargrilled Iberico pork and foie gras burgers",
+        dish_description: "Two of the best mini burgers in Hong Kong...",
         price: "$158",
-        blog_link: "",          
+        blog_link: "http://thedimsumdiaries.com/2013/02/04/22-ships/",          
         restaurant: restaurants[1]
     }
 

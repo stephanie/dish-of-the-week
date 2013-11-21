@@ -7,7 +7,6 @@ class CreateRestaurants < ActiveRecord::Migration
       t.string :cuisine_type
       t.string :price_range
       t.string :menu_url
-      t.integer :submission_number
 
       t.timestamps
     end

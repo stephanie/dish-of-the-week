@@ -2,13 +2,15 @@ class CreateDishes < ActiveRecord::Migration
   def change
     create_table :dishes do |t|
       t.references :restaurant, index: true
-      t.string :course
+      t.string :type
       t.string :dish_name
       t.text :dish_description
       t.binary :image
-      t.integer :price
+      t.string :price
       t.string :blog_link
-      t.string :date_presented
+      t.string :published_on
+      t.integer :up_vote
+      t.integer :down_vote
 
       t.timestamps
     end
