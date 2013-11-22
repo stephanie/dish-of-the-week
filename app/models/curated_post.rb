@@ -1,2 +1,3 @@
 class CuratedPost < Dish
+
 end

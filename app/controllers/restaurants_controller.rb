@@ -3,7 +3,7 @@ class RestaurantsController < ApplicationController
   respond_to :json
 
   def index
-    @restaurants = params[:id] ? Restaurant.where('id = ?', params[:id]) : Restaurant.all
+    @restaurants = params[:id] ? Restaurant.where('id in (?)', params[:id].split(",")) : Restaurant.all
   end
 
   def create

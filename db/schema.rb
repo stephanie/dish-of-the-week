@@ -16,15 +16,16 @@ ActiveRecord::Schema.define(version: 20131119044053) do
   create_table "dishes", force: true do |t|
     t.integer  "restaurant_id"
     t.string   "type"
-    t.string   "course"
     t.string   "dish_name"
     t.text     "dish_description"
     t.binary   "image"
-    t.integer  "price"
+    t.string   "price"
     t.string   "blog_link"
+    t.boolean  "is_accepted",      default: false
     t.string   "published_on"
     t.integer  "up_vote"
     t.integer  "down_vote"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -34,7 +35,7 @@ ActiveRecord::Schema.define(version: 20131119044053) do
   create_table "restaurants", force: true do |t|
     t.string   "name"
     t.string   "location"
-    t.integer  "phone"
+    t.integer  "tel"
     t.string   "cuisine_type"
     t.string   "price_range"
     t.string   "menu_url"
@@ -53,7 +54,6 @@ ActiveRecord::Schema.define(version: 20131119044053) do
   add_index "reviews", ["restaurant_id"], name: "index_reviews_on_restaurant_id"
 
   create_table "users", force: true do |t|
-    t.integer  "submission_id"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
@@ -64,7 +64,5 @@ ActiveRecord::Schema.define(version: 20131119044053) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "users", ["submission_id"], name: "index_users_on_submission_id"
 
 end

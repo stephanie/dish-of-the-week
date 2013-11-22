@@ -1,11 +1,7 @@
-collection @restaurants
+object false
 
-attributes :name, :price_range, :cuisine_type
+child @restaurants, object_root: false do
 
-node :show_href do |restaurant|
-  restaurant_url(restaurant)
-end
+  attributes :name, :price_range, :cuisine_type, :location
 
-node :index_href do |restaurant|
-  restaurants_url
 end
