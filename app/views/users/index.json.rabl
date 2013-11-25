@@ -1,3 +1,7 @@
-collection @users
+object false
 
-  attributes :first_name, :last_name, :email
+child @users, object_root: false do
+
+  attributes :first_name, :last_name, :email, :id
+
+end

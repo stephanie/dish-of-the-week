@@ -49,14 +49,7 @@ curated_posts = CuratedPost.create([
         price: "$158",
         blog_link: "http://thedimsumdiaries.com/2013/02/04/22-ships/",          
         restaurant: restaurants[1]
-    },
-    {
-        dish_name: "Beef short rib, pickled carrots, baby onions",
-        price: "$158",
-        blog_link: "http://thedimsumdiaries.com/2013/02/04/22-ships/",          
-        restaurant: restaurants[1]
     }
-
 ])
 
 users = User.create([
@@ -91,7 +84,16 @@ submissions = Submission.create([
         dish_description: "Homemade corn tortillas, mmm.",
         price: "$45",
         is_accepted: false,
-        restaurant: restaurants[4],
+        restaurant: restaurants[3],
+        user: users[1]
+    },
+    {
+        dish_name: "Beef short rib, pickled carrots, baby onions",
+        price: "$158",
+        blog_link: "http://thedimsumdiaries.com/2013/02/04/22-ships/",          
+        restaurant: restaurants[1],
+        is_accepted: true,
         user: users[1]
     }
+
 ])

@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.0.0'
 
-gem 'sqlite3'
+gem 'pg'
 
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 
@@ -14,3 +14,6 @@ gem 'puma'
 gem 'rabl'
 gem 'oj'
 gem 'gon'
+gem 'slim'
+
+gem 'carrierwave'

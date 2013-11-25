@@ -1,0 +1,10 @@
+<ul>
+  {{#each dishes}}
+    <li>{{dish_name}}</li>
+    <li>{{dish_description}}</li>
+    <li>{{price}}</li>
+    <li>{{restaurant_name}}</li>
+    <li><button id="submission-form-btn" data-id="{{id}}">Edit</button></li>
+  {{/each}}
+</ul>
+<p><a id="restaurant-info" href="#" data-id="2">Where to find this?</a></p>

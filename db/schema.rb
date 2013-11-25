@@ -13,12 +13,15 @@
 
 ActiveRecord::Schema.define(version: 20131119044053) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "dishes", force: true do |t|
     t.integer  "restaurant_id"
     t.string   "type"
     t.string   "dish_name"
     t.text     "dish_description"
-    t.binary   "image"
+    t.string   "image"
     t.string   "price"
     t.string   "blog_link"
     t.boolean  "is_accepted",      default: false
@@ -30,7 +33,7 @@ ActiveRecord::Schema.define(version: 20131119044053) do
     t.datetime "updated_at"
   end
 
-  add_index "dishes", ["restaurant_id"], name: "index_dishes_on_restaurant_id"
+  add_index "dishes", ["restaurant_id"], name: "index_dishes_on_restaurant_id", using: :btree
 
   create_table "restaurants", force: true do |t|
     t.string   "name"
@@ -51,7 +54,7 @@ ActiveRecord::Schema.define(version: 20131119044053) do
     t.datetime "updated_at"
   end
 
-  add_index "reviews", ["restaurant_id"], name: "index_reviews_on_restaurant_id"
+  add_index "reviews", ["restaurant_id"], name: "index_reviews_on_restaurant_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "first_name"

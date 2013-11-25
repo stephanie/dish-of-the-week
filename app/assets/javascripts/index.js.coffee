@@ -1,28 +1,30 @@
 $ ->
-
-  $('section').on 'click', 'ul li', (e) ->
-    id = $(@).data('id')
-    $.ajax "/api/restaurants/#{id}",
-      type: 'GET',
-      dataType: 'json',
+  showPage = (url, templateFunc) ->
+    $.ajax url,
+      type: 'GET'
+      dataType: 'json'
       success: (data) ->
-        source = $('#restaurant-template').html()
-        template = Handlebars.compile(source)
-        output = template(data.restaurants[0])
-        $('#content').html(output)
+        $('#content').html(templateFunc(data))
 
-  $.ajax '/api/restaurants',
-    type: 'GET',
-    dataTye: 'json',
-    success: (data) ->
-      #Get the template from the script element
-      source = $('#restaurants-template').html()
-      
-      #Compile the template to a JS function
-      template = Handlebars.compile(source)
-      
-      #Call the template function and pass in the data to return the html
-      output = template(data)
+  $('section').on 'click', '#restaurant-info', (e) ->
+    showPage "/api/restaurants/1", Handlebars.templates.restaurant
 
-      #Insert that html into the section element
-      $('#content').html(output)
+  $('section').on 'click', '#back', (e) ->
+    showPage '/api/dishes/1', Handlebars.templates.dish
+
+  $('section').on 'click', '#submission-form-btn', (e) ->
+    id = $(@).data('id')
+    console.log id
+    showPage "/api/dishes/#{id}", Handlebars.templates.submission
+
+  $('section').on 'submit', '#submission-form', (e) ->
+    id = $(@).data('id')
+    data = $(@).serialize()
+
+    $.ajax "/api/curated_posts/#{id}",
+      type: 'PATCH',
+      data: data,
+      success: (e) -> console.log(e),
+      error: (x,y,z) -> console.log(x,y,z)
+          
+  showPage '/api/dishes/1', Handlebars.templates.dish
