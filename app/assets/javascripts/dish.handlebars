@@ -1,10 +1,12 @@
-<ul>
-  {{#each dishes}}
-    <li>{{dish_name}}</li>
-    <li>{{dish_description}}</li>
-    <li>{{price}}</li>
-    <li>{{restaurant_name}}</li>
-    <li><button id="submission-form-btn" data-id="{{id}}">Edit</button></li>
-  {{/each}}
-</ul>
-<p><a id="restaurant-info" href="#" data-id="2">Where to find this?</a></p>
+<div id="dish-background">
+  <ul id="dish-list">
+    {{#each dishes}}
+      <li id="dish-list-name">{{dish_name}}</li>
+      <li id="dish-list-description">{{dish_description}}</li>
+      <li id="dish-list-price">{{price}}</li>
+      <li id="dish-list-restaurant">{{restaurant_name}}</li>
+      <li><button id="edit-form-btn" data-id="{{id}}">Edit</button></li>
+    {{/each}}
+  </ul>
+  <p><a id="restaurant-info" href="#" data-id="2">Where to find this?</a></p>
+</div>

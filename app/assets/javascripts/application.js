@@ -1,8 +1,9 @@
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
 //= require handlebars
 //= require handlebars.runtime
 //= require dish.template
-//= require submission.template
+//= require editcuratedpost.template
 //= require restaurant.template
 //= require index

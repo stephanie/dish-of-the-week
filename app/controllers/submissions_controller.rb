@@ -44,7 +44,7 @@ class SubmissionsController < DishesController
    private
 
    def post_params
-     params.require(:submission).permit(:dish_name, :dish_description, :blog_link, :is_accepted, :restaurant_id, :user_id, :price, :image)
+     params.require(:submission).permit(:dish_name, :dish_description, :blog_link, :is_accepted, :restaurant_id, :user_id, :price, :image, :restaurant_neighborhood)
    end
 
  end

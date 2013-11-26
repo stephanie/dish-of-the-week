@@ -8,34 +8,34 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 function program1(depth0,data) {
   
   var buffer = "", stack1;
-  buffer += "\n    <li>";
+  buffer += "\n      <li id=\"dish-list-name\">";
   if (stack1 = helpers.dish_name) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = (depth0 && depth0.dish_name); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
   buffer += escapeExpression(stack1)
-    + "</li>\n    <li>";
+    + "</li>\n      <li id=\"dish-list-description\">";
   if (stack1 = helpers.dish_description) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = (depth0 && depth0.dish_description); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
   buffer += escapeExpression(stack1)
-    + "</li>\n    <li>";
+    + "</li>\n      <li id=\"dish-list-price\">";
   if (stack1 = helpers.price) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = (depth0 && depth0.price); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
   buffer += escapeExpression(stack1)
-    + "</li>\n    <li>";
+    + "</li>\n      <li id=\"dish-list-restaurant\">";
   if (stack1 = helpers.restaurant_name) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = (depth0 && depth0.restaurant_name); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
   buffer += escapeExpression(stack1)
-    + "</li>\n    <li><button id=\"submission-form-btn\" data-id=\"";
+    + "</li>\n      <li><button id=\"edit-form-btn\" data-id=\"";
   if (stack1 = helpers.id) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = (depth0 && depth0.id); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
   buffer += escapeExpression(stack1)
-    + "\">Edit</button></li>\n  ";
+    + "\">Edit</button></li>\n    ";
   return buffer;
   }
 
-  buffer += "<ul>\n  ";
+  buffer += "<div id=\"dish-background\">\n  <ul id=\"dish-list\">\n    ";
   stack1 = helpers.each.call(depth0, (depth0 && depth0.dishes), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n</ul>\n<p><a id=\"restaurant-info\" href=\"#\" data-id=\"2\">Where to find this?</a></p>";
+  buffer += "\n  </ul>\n  <p><a id=\"restaurant-info\" href=\"#\" data-id=\"2\">Where to find this?</a></p>\n</div>";
   return buffer;
   });
 })();

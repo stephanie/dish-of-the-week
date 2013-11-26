@@ -1,14 +1,14 @@
 restaurants = Restaurant.create([
     {
         name: "Kau Kee",
-        location: "21 Gough Street, Central",
+        address: "21 Gough Street, Central",
         tel: 28505967,
         cuisine_type: "Chinese",
         price_range: "Below $40",
     },
     {
         name: "22 Ships",
-        location: "22 Ship Street, Wan Chai",
+        address: "22 Ship Street, Wan Chai",
         tel: 25550722,
         cuisine_type: "Spanish",
         price_range: "$151-$300",
@@ -16,7 +16,7 @@ restaurants = Restaurant.create([
     },
     {
         name: "Coast",
-        location: "1/F Kinwick Centre, 32-36 Hollywood Road, SOHO, Central",
+        address: "1/F Kinwick Centre, 32-36 Hollywood Road, SOHO, Central",
         tel: 25445888,
         cuisine_type: "Australian",
         price_range: "$101-$150",
@@ -24,7 +24,7 @@ restaurants = Restaurant.create([
     },
     {
         name: "Taco Chaca",
-        location: "Sai Ying Pun",
+        address: "Sai Ying Pun",
         tel: 25445888,
         cuisine_type: "Mexican",
         price_range: "$41-$100",

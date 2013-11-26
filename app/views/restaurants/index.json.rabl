@@ -2,15 +2,11 @@ object false
 
 child @restaurants, object_root: false do
 
-  attributes :name, :price_range, :cuisine_type, :location, :tel
+  attributes :id, :name, :price_range, :cuisine_type, :location, :tel
 
-
-  node :show_href do |restaurant|
+  
+  node :href do |restaurant|
     restaurant_url(restaurant)
-  end
-
-  node :index_href do |restaurant|
-    restaurants_url
   end
   
   node :links do |restaurant| {
@@ -18,9 +14,9 @@ child @restaurants, object_root: false do
   }
   end
 
-  child :dishes do
-    attribute :dish_name
-    attribute :type
+  node :linked do |restaurant| {
+    restaurants: restaurants_url
+  }
   end
 
 end

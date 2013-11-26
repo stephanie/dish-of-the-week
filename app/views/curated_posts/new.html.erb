@@ -1,0 +1,20 @@
+<h1> Add Curated Post </h1>
+
+<%= form_for @curated_post, :html => {:multipart => true} do |f| %>  
+  <p>  
+    <%= f.label :dish_name %><br />  
+    <%= f.text_field :dish_name %>  
+  </p>
+  <p>  
+    <%= f.label :dish_description %><br />  
+    <%= f.text_field :dish_description %>  
+  </p>
+  <p>  
+    <%= f.label :restaurant_id %><br />  
+    <%= f.text_field :restaurant_id %>  
+  </p>   
+  <p>  
+    <%= f.file_field :image %>  
+  </p>  
+  <p><%= f.submit %></p>  
+<% end %>  

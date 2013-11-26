@@ -24,6 +24,10 @@ class CuratedPostsController < DishesController
   #   end
   # end
 
+  def new 
+    @curated_post = CuratedPost.new
+  end
+
   def index
     @curated_posts = params[:id] ? CuratedPost.where('id in (?)', params[:id].split(",")) : CuratedPost.all
   end

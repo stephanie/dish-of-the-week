@@ -32,6 +32,7 @@ DishOfTheWeek::Application.routes.draw do
 
   end
 
+  get 'new' => 'curated_posts#new', as: :edit
   root 'site#index'
 
 end
