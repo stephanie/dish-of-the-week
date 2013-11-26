@@ -2,7 +2,7 @@ object false
 
 child @restaurants, object_root: false do
 
-  attributes :id, :name, :price_range, :cuisine_type, :location, :tel
+  attributes :id, :name, :address, :price_range, :cuisine_type, :location, :tel
 
   
   node :href do |restaurant|

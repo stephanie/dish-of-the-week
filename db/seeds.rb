@@ -51,24 +51,6 @@ curated_posts = CuratedPost.create([
         restaurant: restaurants[1]
     }
 ])
-
-users = User.create([
-    {
-        first_name: "Charles",
-        last_name: "Munat",
-        email: "chas@munat.com",
-        tagline: "I know good food.",
-        user_score: 10
-    },
-    {
-        first_name: "Test",
-        last_name: "User",
-        email: "test@gmail.com",
-        tagline: "Eaten so much.",
-        user_score: 100
-    }
-])
-
 submissions = Submission.create([
     {
         dish_name: "Grass-fed South Australian Tenderloin",
@@ -77,7 +59,7 @@ submissions = Submission.create([
         blog_link: "http://www.timeout.com.hk/restaurants-bars/features/29860/coast.html",  
         is_accepted: false,
         restaurant: restaurants[2],
-        user: users[0]
+        full_name: "Charles Munat",
     },
     {
         dish_name: "Beef Tacos",
@@ -85,7 +67,7 @@ submissions = Submission.create([
         price: "$45",
         is_accepted: false,
         restaurant: restaurants[3],
-        user: users[1]
+        full_name: "Test User"
     },
     {
         dish_name: "Beef short rib, pickled carrots, baby onions",
@@ -93,7 +75,8 @@ submissions = Submission.create([
         blog_link: "http://thedimsumdiaries.com/2013/02/04/22-ships/",          
         restaurant: restaurants[1],
         is_accepted: true,
-        user: users[1]
+        full_name: "Test User"
+
     }
 
 ])

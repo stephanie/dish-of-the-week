@@ -12,3 +12,30 @@
  *= require bootstrap
  *= require bootstrap-theme
  */
+
+ #dish-background {
+  background-image: url('22ships-burger.jpg');
+  background-size: cover;
+  height: 802px;
+ }
+ #restaurant-background {
+  height: 802px;
+ }
+
+#dish-list {
+  position: relative;
+  list-style: none;
+  background: rgba(0,0,0,0.5);
+  top: 702px;
+  height: 100px;
+  color: white;
+}
+
+.btn.btn-primary.btn-lg {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+}
+#topofpage {
+margin: 0;
+}

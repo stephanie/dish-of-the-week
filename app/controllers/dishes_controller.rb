@@ -12,7 +12,7 @@ class DishesController < ApplicationController
   end
   
   def create
-
+    
   end 
 
   def update

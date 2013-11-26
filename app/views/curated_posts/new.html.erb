@@ -11,7 +11,7 @@
   </p>
   <p>  
     <%= f.label :restaurant_id %><br />  
-    <%= f.text_field :restaurant_id %>  
+    <%= f.select :restaurant_id, Restaurant.all.map{|restaurant| [restaurant.name, restaurant.id]} %>  
   </p>   
   <p>  
     <%= f.file_field :image %>  

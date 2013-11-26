@@ -23,11 +23,12 @@ ActiveRecord::Schema.define(version: 20131125075839) do
     t.text     "dish_description"
     t.string   "price"
     t.string   "blog_link"
-    t.boolean  "is_accepted",      default: false
+    t.boolean  "is_accepted",             default: false
     t.string   "published_on"
     t.integer  "up_vote"
     t.integer  "down_vote"
-    t.integer  "user_id"
+    t.string   "restaurant_neighborhood"
+    t.string   "full_name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image"
@@ -37,7 +38,7 @@ ActiveRecord::Schema.define(version: 20131125075839) do
 
   create_table "restaurants", force: true do |t|
     t.string   "name"
-    t.string   "location"
+    t.string   "address"
     t.integer  "tel"
     t.string   "cuisine_type"
     t.string   "price_range"
@@ -55,17 +56,5 @@ ActiveRecord::Schema.define(version: 20131125075839) do
   end
 
   add_index "reviews", ["restaurant_id"], name: "index_reviews_on_restaurant_id", using: :btree
-
-  create_table "users", force: true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.string   "password"
-    t.string   "password_confirmation"
-    t.string   "tagline"
-    t.integer  "user_score"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
 end

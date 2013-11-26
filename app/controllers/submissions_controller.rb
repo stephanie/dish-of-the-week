@@ -12,7 +12,16 @@ class SubmissionsController < DishesController
   end
    
    def create
-     @submission = Submission.new(post_params)
+    if params[:restaurant_name]
+      if @restaurant = Restaurant.where(name: params[:restaurant_name])
+        @submission = @restaurant.submission.build(post_params)
+      else 
+        @restaurant = Restaurant.new(name: params[:restaurant_name])
+        @submission = restaurant.submission.build(post_params)
+      end
+    else
+      @submission = Submission.new(post_params)
+    end
 
      if @submission.save
        head :created
@@ -44,7 +53,7 @@ class SubmissionsController < DishesController
    private
 
    def post_params
-     params.require(:submission).permit(:dish_name, :dish_description, :blog_link, :is_accepted, :restaurant_id, :user_id, :price, :image, :restaurant_neighborhood)
+     params.require(:submission).permit(:dish_name, :dish_description, :blog_link, :is_accepted, :restaurant_id, :full_name, :price, :image, :restaurant_neighborhood)
    end
 
  end

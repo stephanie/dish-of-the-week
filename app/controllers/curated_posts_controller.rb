@@ -2,34 +2,35 @@ class CuratedPostsController < DishesController
 
   respond_to :json
 
-  # def image
-  #   tempfile = Tempfile.new("imageupload")
-  #   tempfile.binmode
-  #   tempfile << request.body.read
-  #   tempfile.rewind
-
-  #   image_params = params.slice(:filename, :type, :head).merge(:tempfile => tempfile)
-  #   image = ActionDispatch::Http::UploadedFile.new(image_params)
-
-  #   @curated_post = CuratedPost.find(params[:id])
-  #   @curated_post.image = image
-
-  #   respond_to do |format|
-  #     if @curated_post.save
-  #       head :ok
-  #     else
-  #       render :json => @curated_post.errors, 
-  #       head :unprocessable_entity
-  #     end
-  #   end
-  # end
-
   def new 
     @curated_post = CuratedPost.new
   end
 
   def index
     @curated_posts = params[:id] ? CuratedPost.where('id in (?)', params[:id].split(",")) : CuratedPost.all
+  end
+
+  def show
+    offset = rand(CuratedPost.count)
+    curated_post = CuratedPost.first(:offset => offset)
+
+    render json: {
+      curated_post: {
+        dish_name: curated_post.dish_name,
+        dish_description: curated_post.dish_description,
+        dish_image_url: curated_post.image.url,
+        id: curated_post.id,
+        up_vote: curated_post.up_vote,
+        down_vote: curated_post.down_vote,
+        restaurant: {
+          name: curated_post.restaurant.name,
+          address: curated_post.restaurant.address,
+          tel: curated_post.restaurant.tel,
+          cuisine_type: curated_post.restaurant.cuisine_type,
+          price_range: curated_post.restaurant.price_range,
+        }
+      }
+    }
   end
   
   def create
@@ -47,13 +48,27 @@ class CuratedPostsController < DishesController
     
     if @curated_post
       if @curated_post.update(post_params)
-        head :ok
+        head :no_content
       else
         head :unprocessable_entity
       end
     else
       head :not_found
     end
+  end
+
+  def upvote
+    @curated_post = CuratedPost.where('id = ?', params[:id]).take
+    @curated_post.upvote!
+
+    head :no_content
+  end
+
+  def downvote
+    @curated_post = CuratedPost.where('id = ?', params[:id]).take
+    @curated_post.downvote!
+
+    head :no_content
   end
 
   def destroy

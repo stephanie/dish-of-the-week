@@ -12,6 +12,7 @@ class CreateDishes < ActiveRecord::Migration
       t.integer :up_vote
       t.integer :down_vote
       t.string :restaurant_neighborhood
+      t.string :full_name
 
       t.timestamps
     end

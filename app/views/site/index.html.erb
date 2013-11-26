@@ -1,4 +1,5 @@
 <section id="content"></section>
+<section id="test"></section>
 
 <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
   Recommend a dish
@@ -13,9 +14,7 @@
       </div>
       <div class="modal-body">
         <form id="submission-form">
-          <input id="first-name" type="text" class="form-control" placeholder="Your first name">
-          </br>
-          <input id="last-name" type="text" class="form-control" placeholder="Your last name">
+          <input id="full-name" type="text" class="form-control" placeholder="Your full name">
           </br>
           <input id="dish-name" type="text" class="form-control" placeholder="Dish name">
           </br>
@@ -35,3 +34,11 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+
+  $(document).ready(function() {
+     $('#nav').localScroll({duration:800});
+  });
+
+</script>

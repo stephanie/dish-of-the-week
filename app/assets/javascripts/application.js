@@ -3,7 +3,10 @@
 //= require bootstrap
 //= require handlebars
 //= require handlebars.runtime
-//= require dish.template
+//= require curated_post.template
+//= require test.template
+//= require testagain.template
 //= require editcuratedpost.template
-//= require restaurant.template
 //= require index
+//= require jquery.localscroll
+//= require jquery.scrollTo
