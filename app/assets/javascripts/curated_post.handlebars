@@ -5,10 +5,14 @@
         <li id="dish-list-name">{{dish_name}}</li>
         <li id="dish-list-description">{{dish_description}}</li>
         <li id="dish-list-price">{{price}}</li>
-        <li id="dish-list-restaurant" class="nav"><a href="#restaurant-info">{{restaurant.name}}</a></li>
     </ul>
+  <div id="nav">
+    <a href="#restaurant-info" id="dish-list-restaurant">{{restaurant.name}}</a>
+  </div>
   <button id="upvote-btn" data-id="{{id}}"> {{up_vote}}</button>
   <button id="downvote-btn" data-id="{{id}}">{{down_vote}}</button>
+  <p id="clicked">0</p>
+
   </div>
 
   <a name="restaurant-info"></a>
@@ -20,15 +24,17 @@
         <li id="restaurant-list-tel">{{tel}}</li>
         <li id="restaurant-list-cuisine-type">{{cuisine_type}}</li>
         <li id="restaurant-list-price-range">{{price_range}}</li>
-      {{/with}}
+
     </ul>
-    <div id="nav">
+    <div id="nav-return">
       <a id="dish-link" href="#topofpage">The dish</a>
     </div>
 
-    <div id="map_canvas" style="width:800px; height:500px">
-      <img src="http://maps.googleapis.com/maps/api/staticmap?center=22+Ship+Street,Hong+Kong&zoom=14&size=400x400&sensor=false" />
-    </div>
-  {{/with}}
-</div>
+  </div>
 
+<script>
+  L.marker([{{latitude}}, {{longitude}}]).addTo(map).bindPopup("{{name}}") 
+</script>
+
+{{/with}}
+{{/with}}

@@ -4,9 +4,11 @@
 //= require handlebars
 //= require handlebars.runtime
 //= require curated_post.template
-//= require test.template
-//= require testagain.template
-//= require editcuratedpost.template
+//= require submission.template
 //= require index
-//= require jquery.localscroll
-//= require jquery.scrollTo
+//= require localscroll
+//= require scrollTo
+//= require leaflet
+//= require map
+
+

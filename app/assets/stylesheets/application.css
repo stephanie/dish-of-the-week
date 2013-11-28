@@ -8,29 +8,38 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
  *= require bootstrap
  *= require bootstrap-theme
+ *= require leaflet
+ *= require modal-window
+ *= require_self
  */
 
- #dish-background {
+#dish-background {
   background-image: url('22ships-burger.jpg');
   background-size: cover;
+  width: 100%;
   height: 802px;
  }
- #restaurant-background {
+#restaurant-background {
   height: 802px;
  }
+
+#clicked {
+  text-indent: -99999px;
+}
 
 #dish-list {
   position: relative;
   list-style: none;
   background: rgba(0,0,0,0.5);
-  top: 702px;
+  top: 0px;
   height: 100px;
   color: white;
 }
-
+#submission-btn {
+  z-index: 10;
+}
 .btn.btn-primary.btn-lg {
   position: absolute;
   top: 50px;
@@ -38,4 +47,9 @@
 }
 #topofpage {
 margin: 0;
+}
+
+#map {
+  height: 500px;
+  width: 500px;
 }

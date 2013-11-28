@@ -3,31 +3,22 @@ class SubmissionsController < DishesController
   respond_to :json
 
   def index
-   if params[:user_id]
-      @user = User.find(params[:user_id]) 
-      @submissions = params[:id] ? @user.submissions.find('id in (?)', params[:id].split(",")) : @user.submissions
+   if params[:restaurant_id]
+      @restaurant = Restaurant.find(params[:restaurant_id]) 
+      @submissions = params[:id] ? @restaurant.submissions.find('id in (?)', params[:id].split(",")) : @restaurant.submissions
     else 
       @submissions = params[:id] ? Submission.where('id in (?)', params[:id].split(",")) : Submission.all
     end
   end
    
    def create
-    if params[:restaurant_name]
-      if @restaurant = Restaurant.where(name: params[:restaurant_name])
-        @submission = @restaurant.submission.build(post_params)
-      else 
-        @restaurant = Restaurant.new(name: params[:restaurant_name])
-        @submission = restaurant.submission.build(post_params)
-      end
-    else
-      @submission = Submission.new(post_params)
-    end
+    @submission = Submission.new(post_params)
 
-     if @submission.save
-       head :created
-     else
-       head :unprocessable_entity
-     end
+    if @submission.save
+      head :created
+    else
+      head :unprocessable_entity
+    end
    end  
 
    def update
@@ -53,7 +44,7 @@ class SubmissionsController < DishesController
    private
 
    def post_params
-     params.require(:submission).permit(:dish_name, :dish_description, :blog_link, :is_accepted, :restaurant_id, :full_name, :price, :image, :restaurant_neighborhood)
+     params.require(:submission).permit(:dish_name, :dish_description, :blog_link, :is_accepted, :restaurant_id, :full_name, :price, :image, :restaurant_name)
    end
 
  end

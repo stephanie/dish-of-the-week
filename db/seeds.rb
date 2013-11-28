@@ -12,7 +12,6 @@ restaurants = Restaurant.create([
         tel: 25550722,
         cuisine_type: "Spanish",
         price_range: "$151-$300",
-        menu_url: "http://www.22ships.hk/menu",
     },
     {
         name: "Coast",
@@ -20,7 +19,6 @@ restaurants = Restaurant.create([
         tel: 25445888,
         cuisine_type: "Australian",
         price_range: "$101-$150",
-        menu_url: "http://www.coast.com.hk/sites/default/files/v8_CoastMenu.pdf",
     },
     {
         name: "Taco Chaca",

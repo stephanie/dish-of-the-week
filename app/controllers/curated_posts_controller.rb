@@ -24,6 +24,7 @@ class CuratedPostsController < DishesController
         down_vote: curated_post.down_vote,
         restaurant: {
           name: curated_post.restaurant.name,
+          id: curated_post.restaurant.id,
           address: curated_post.restaurant.address,
           tel: curated_post.restaurant.tel,
           cuisine_type: curated_post.restaurant.cuisine_type,
@@ -55,20 +56,6 @@ class CuratedPostsController < DishesController
     else
       head :not_found
     end
-  end
-
-  def upvote
-    @curated_post = CuratedPost.where('id = ?', params[:id]).take
-    @curated_post.upvote!
-
-    head :no_content
-  end
-
-  def downvote
-    @curated_post = CuratedPost.where('id = ?', params[:id]).take
-    @curated_post.downvote!
-
-    head :no_content
   end
 
   def destroy

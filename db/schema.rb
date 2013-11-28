@@ -17,17 +17,16 @@ ActiveRecord::Schema.define(version: 20131125075839) do
   enable_extension "plpgsql"
 
   create_table "dishes", force: true do |t|
-    t.integer  "restaurant_id"
+    t.string   "restaurant_id"
     t.string   "type"
     t.string   "dish_name"
     t.text     "dish_description"
     t.string   "price"
     t.string   "blog_link"
-    t.boolean  "is_accepted",             default: false
+    t.boolean  "is_accepted",      default: false
     t.string   "published_on"
     t.integer  "up_vote"
     t.integer  "down_vote"
-    t.string   "restaurant_neighborhood"
     t.string   "full_name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -39,10 +38,12 @@ ActiveRecord::Schema.define(version: 20131125075839) do
   create_table "restaurants", force: true do |t|
     t.string   "name"
     t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
     t.integer  "tel"
     t.string   "cuisine_type"
     t.string   "price_range"
-    t.string   "menu_url"
+    t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

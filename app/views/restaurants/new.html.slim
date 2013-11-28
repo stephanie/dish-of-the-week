@@ -1,0 +1,152 @@
+.row
+  .col-lg-6
+    .panel.panel-default
+      .panel-heading 
+        a href="https://www.foursquare.com"
+        big.icon-foursquare.pull-left
+        h3.panel-title Venue Search Powered by Foursquare
+      .panel-body
+        p.white-font Please enter venue:
+        form#searchform action="#" method="GET"
+          input#query name="query" type="text" placeholder="Example: Peter Luger's"
+          '
+          |
+          input#submit name="submit" type="submit" value="Submit"
+
+        p.restaurant-search#venues
+  .col-lg-6
+    #new-restaurant-form
+      h2 Add new restaurant
+      == form_for (@restaurant) do |f|
+        == f.label :name
+        '
+        == f.text_field :name, id: 'restaurant-name-field', class: 'small-form-field'
+        <br />
+        == f.label :address
+        '
+        == f.text_field :address, id: 'restaurant-address-field', class: 'small-form-field'
+        <br />
+        == f.label :tel
+        '
+        == f.text_field :tel, id: 'restaurant-tel-field', class: 'small-form-field'
+        <br />
+        == f.label :latitude
+        '
+        == f.text_field :latitude, id: 'restaurant-lat-field', class: 'small-form-field'
+        <br />
+        == f.label :longitude
+        '
+        == f.text_field :longitude, id: 'restaurant-lng-field', class: 'small-form-field'
+        <br />
+        == f.label :url
+        '
+        == f.text_field :url, id: 'restaurant-url-field', class: 'small-form-field'
+        <br />
+        == f.submit "Add new restaurant", class: "small-form-button"
+
+javascript:
+  $(function() {
+
+    //Collapsing Comments
+    $(".collapse").collapse()
+
+    //Retrieve the user's location using the HTML5 Geolocation API
+    $("#searchform").submit(function(event){
+      event.preventDefault();
+      //if (!lat) {
+      //    navigator.geolocation.getCurrentPosition(getLocation);
+      //} else {
+          getVenues();
+      //}
+    });
+      
+    //function getLocation(location) {
+    //  lat = location.coords.latitude;
+    //  lng = location.coords.longitude;
+    //}
+
+    //Get data from Foursquare and Post
+    function getVenues() {
+
+      $.ajax({
+        type: "GET",
+        url: "https://api.foursquare.com/v2/venues/search?client_id=1EKB05BQZ2KH2JG0F0CWUPVZHRGBQ2JFESTKZWDJTRMWFQJY&client_secret=F2WHD3Q35QYCNCODRAWIZL51XEOFXRPVRKHX3HAMQCL3VOYC&v=20131126&ll=22.27,114.15&limit=5&query="+$("#query").val()+"",
+        success: function(data) {
+          dataobj = data.response.venues;
+          $("#venues").html("");
+          console.log(dataobj)
+
+          $.each( dataobj, function() {
+            if (this) {
+            console.log(this.categories[0])
+                str = this.categories[0].icon.prefix;
+                newstr = str.substring(0, str.length - 1);
+                icon = newstr+this.categories[0].icon.suffix;
+            } else {
+                icon = "";
+            }
+
+            name = this.name;
+            
+            if (this.contact.formattedPhone) {
+                tel = this.contact.formattedPhone;
+            } else {
+                tel = "";
+            }
+            
+            if (this.location.address) {
+                address = this.location.address;
+            } else {
+                address = "";
+            }
+            if (this.location.lat) {
+                lat = this.location.lat;
+            } else {
+                lat = "";
+            }
+            if (this.location.lng) {
+                lng = this.location.lng;
+            } else {
+                lng = "";
+            }
+            if (this.url) {
+                url = this.url;
+            } else {
+                url = "";
+            }
+
+            appendeddatahtml = 
+              '<div class="venue"><h2 class="restaurant-search-name">'+name+'</h2>'+
+              '<strong>Lat: </strong>'+'<span class="restaurant-search-lat">'+lat+'</span>'+', '+
+              '<strong>Lng: </strong>'+'<span class="restaurant-search-lng">'+lng+'</span><br />'+
+              '<p class="restaurant-search-address">'+address+'</p>'+
+              '<p class="restaurant-search-tel">'+tel+'</p>'+
+              '<a class="restaurant-search-url" href="'+this.url+'">'+url+'</a>'+
+              '</br><button class="new-restaurant-btn" data-restaurant-name="'+name+
+              '" data-restaurant-lat="'+lat+
+              '" data-restaurant-lng="'+lng+
+              '" data-restaurant-address="'+address+
+              '" data-restaurant-tel="'+tel+
+              '" data-restaurant-url="'+url+'">New Restaurant</button>';
+            
+              $("#venues").append(appendeddatahtml);
+
+            });
+          }
+      });
+    }     
+
+    $('#venues').on('click', '.new-restaurant-btn', function() {
+      console.log('button clicked');
+      console.log($(this).attr('data-restaurant-name'));
+      console.log($(this).attr('data-restaurant-address'));
+      console.log($(this).attr('data-restaurant-tel'));
+      $('#restaurant-name-field').val($(this).attr('data-restaurant-name'));
+      $('#restaurant-address-field').val($(this).attr('data-restaurant-address'));
+      $('#restaurant-tel-field').val($(this).attr('data-restaurant-tel'));
+      $('#restaurant-lat-field').val($(this).attr('data-restaurant-lat'));
+      $('#restaurant-lng-field').val($(this).attr('data-restaurant-lng'));
+      $('#restaurant-url-field').val($(this).attr('data-restaurant-url'));
+    });
+
+  });

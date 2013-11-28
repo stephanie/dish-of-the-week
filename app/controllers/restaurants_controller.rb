@@ -6,11 +6,15 @@ class RestaurantsController < ApplicationController
     @restaurants = params[:id] ? Restaurant.where('id in (?)', params[:id].split(",")) : Restaurant.all
   end
 
+  def new
+    @restaurant = Restaurant.new
+  end
+
   def create
     @restaurant = Restaurant.new(restaurant_params)
 
     if @restaurant.save
-      head :created
+      redirect_to curated_posts_new_url
     else
       head :unprocessable_entity
     end
@@ -38,8 +42,8 @@ class RestaurantsController < ApplicationController
 
   private
 
-  def post_params
-    params.require(:restaurant).permit( :name, :price_range, :cuisine_type, :location, :tel, :menu_url)
+  def restaurant_params
+    params.require(:restaurant).permit( :name, :price_range, :cuisine_type, :address, :tel, :latitude, :longitude, :url)
   end
 
 end
