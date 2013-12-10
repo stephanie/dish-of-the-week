@@ -29,6 +29,8 @@ class CuratedPostsController < DishesController
           tel: curated_post.restaurant.tel,
           cuisine_type: curated_post.restaurant.cuisine_type,
           price_range: curated_post.restaurant.price_range,
+          latitude: curated_post.restaurant.latitude,
+          longitude: curated_post.restaurant.longitude,
         }
       }
     }

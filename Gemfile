@@ -15,5 +15,7 @@ gem 'rabl'
 gem 'oj'
 gem 'gon'
 gem 'slim'
+gem 'rails_12factor', group: :production
+
 
 gem 'carrierwave'

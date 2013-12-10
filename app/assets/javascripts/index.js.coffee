@@ -15,12 +15,19 @@ $ ->
       success: (data) ->
         $('#submission-page').html(templateFunc(data))
 
+  showMapContentPage = (url, templateFunc) ->
+      $.ajax url,
+        type: 'GET'
+        dataType: 'json'
+        success: (data) ->
+          $('#map-content').html(templateFunc(data))
+
   counter = 0
 
-  $('section').on 'click', '#upvote-btn', (e) ->
+  $('div').on 'click', '#tried-btn', (e) ->
     id = $(@).data('id')
     console.log id
-    upvote = parseInt($('#upvote-btn').html()) + 1
+    upvote = parseInt($('#tried-count').html()) + 1
     console.log upvote
 
     counter++
@@ -37,15 +44,15 @@ $ ->
           },
         }),
         success: (data) ->
-          current = parseInt($('#upvote-btn').html()) 
-          $('#upvote-btn').html(current + 1)
+          current = parseInt($('#tried-count').html()) 
+          $('#tried-count').html(current + 1)
           console.log current
         error: (x,y,z) -> console.log(x,y,z)
 
-  $('section').on 'click', '#downvote-btn', (e) ->
+  $('div').on 'click', '#liked-btn', (e) ->
     id = $(@).data('id')
     console.log id
-    downvote = parseInt($('#downvote-btn').html()) + 1
+    downvote = parseInt($('#liked-count').html()) + 1
     console.log downvote
 
     counter++
@@ -62,8 +69,8 @@ $ ->
           },
         }),
         success: (data) ->
-          current = parseInt($('#downvote-btn').html()) 
-          $('#downvote-btn').html(current + 1)
+          current = parseInt($('#liked-count').html()) 
+          $('#liked-count').html(current + 1)
           console.log current
         error: (x,y,z) -> console.log(x,y,z)
 
@@ -99,4 +106,6 @@ $ ->
 
   showSubmissionPage '/api/curated_posts/random', Handlebars.templates.submission
   showLandingPage '/api/curated_posts/random', Handlebars.templates.curated_post
+  showMapContentPage '/api/curated_posts/random', Handlebars.templates.curated_map_post
+
 

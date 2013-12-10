@@ -1,0 +1,203 @@
+$darkest-color: rgb(83,71,65);
+$dark-color: rgb(115, 99, 87);
+$light-color: rgb(153, 134, 117);
+$lightest-color: rgb(199, 178, 153);
+
+#entire-page {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#dish-background {
+    background-image: url("22ships-burger.jpg");
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#map {
+    height: 85%;
+    width: 100%;
+    position: relative;
+}
+
+#map-content {
+    position: relative;
+    width: 100%;
+    height: 15%;
+    z-index: 10;
+    background: darken($darkest-color, 6%);
+    color: white;
+    padding: 20px;
+}
+
+#clicked {
+    text-indent: -99999px;
+}
+
+a#second-page-link {
+    text-decoration: none;
+    color: lighten($lightest-color, 5%);
+    font-size: 1.2em;
+}
+
+#second-page-link-box {
+    float: left;
+    background: darken($darkest-color, 6%);
+    text-transform: uppercase;
+    position: absolute;
+    top: 0px;
+    padding: 18px;
+    z-index: 10;
+}
+
+#dish-title {
+    background: rgba(255, 255, 255, 0.5);
+    height: 100%;
+    width: 100%;
+    display: table;
+}
+
+#dish-title #dish-title-content {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    color: $dark-color;
+    font-size: 4.5em;
+    text-transform: uppercase;
+}
+
+#restaurant-list {
+    list-style: none;
+}
+
+a#dish-name-restaurant-div:hover,
+a#dish-name-restaurant-div:focus,
+a#dish-name-restaurant-div:active,
+a#second-page-link:hover,
+a#second-page-link:focus,
+a#second-page-link:active,
+#submission-btn:hover,
+#submission-btn:focus,
+#submission-btn:active {
+    text-decoration: none;
+    color: $dark-color;
+}
+
+#dish-title-restaurant {
+    color: $darkest-color;
+}
+
+a {
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+a#dish-name-restaurant-div {
+    text-decoration: none;
+    color: $light-color;
+}
+
+button i {
+    display: block;
+    width: 70px;
+    height: 70px;
+    background-size: cover;
+}
+
+button:active,
+button:focus,
+button {
+    border: none;
+    outline: 0;
+    background: none;
+}
+
+#submission-btn {
+    position: absolute;
+    bottom: 0;
+    padding: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    border-radius: 0px;
+    background: rgba(83, 71, 65, 0.6);
+    border: none;
+    box-shadow: none;
+    width: 100%;
+    font-size: 1em;
+    color: rgba(255, 255, 255, 0.5);
+    z-index: 10;
+}
+
+#votes-box {
+    background: rgba(255, 255, 255, 0.6);
+    position: absolute;
+    top: 30%;
+    height: 265px;
+    width: 265px;
+    z-index: 10;
+    right: 40%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    text-align: center;
+    padding: 10px;
+    vertical-align: middle;
+}
+
+#tried-btn,
+#liked-btn {
+    font-size: 1.5em;
+    line-height: 27px;
+    color: $dark-color;
+}
+
+#tried-count,
+#liked-count {
+    color: $darkest-color;
+    font-weight: 700;
+}
+
+#dish-logo {
+    font-size: 4em;
+    color: $darkest-color;
+    font-weight: 700;
+    line-height: 75px;
+    margin-top: 60px;
+}
+
+.btn.btn-primary.btn-lg {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+}
+
+#topofpage {
+    margin: 0;
+}
+
+#map-post-title {
+    text-transform: uppercase;
+    font-size: 1.5em;
+}
+
+#map-post-content {
+    line-height: 2em;
+    font-size: 1.3em;
+}

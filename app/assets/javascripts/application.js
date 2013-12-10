@@ -5,10 +5,10 @@
 //= require handlebars.runtime
 //= require curated_post.template
 //= require submission.template
+//= require curated_map_post.template
 //= require index
 //= require localscroll
 //= require scrollTo
-//= require leaflet
-//= require map
+
 
 

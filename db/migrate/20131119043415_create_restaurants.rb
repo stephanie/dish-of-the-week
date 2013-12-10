@@ -5,7 +5,7 @@ class CreateRestaurants < ActiveRecord::Migration
       t.string :address
       t.float :latitude
       t.float :longitude
-      t.integer :tel
+      t.string :tel
       t.string :cuisine_type
       t.string :price_range
       t.string :url

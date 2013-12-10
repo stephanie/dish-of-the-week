@@ -3433,7 +3433,7 @@ L.icon = function (options) {
 L.Icon.Default = L.Icon.extend({
 
 	options: {
-		iconSize: [25, 41],
+		iconSize: [50, 82],
 		iconAnchor: [12, 41],
 		popupAnchor: [1, -34],
 
@@ -3806,7 +3806,7 @@ L.marker = function (latlng, options) {
 
 L.DivIcon = L.Icon.extend({
 	options: {
-		iconSize: [12, 12], // also can be set through CSS
+		iconSize: [24, 24], // also can be set through CSS
 		/*
 		iconAnchor: (Point)
 		popupAnchor: (Point)
