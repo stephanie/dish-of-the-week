@@ -17,5 +17,5 @@ gem 'gon'
 gem 'slim'
 gem 'rails_12factor', group: :production
 
-
+gem 'dotenv-rails', :groups => [:development, :test]
 gem 'carrierwave'
