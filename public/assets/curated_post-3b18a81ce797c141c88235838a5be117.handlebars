@@ -1,0 +1,39 @@
+<div id="dish-background">
+  {{#with curated_post}}
+  <div id="dish-title">
+    <div id="dish-title-content">
+      <div id="dish-title-name">{{dish_name}}</div>
+      <div id="dish-title-restaurant">{{restaurant.name}}</div>
+    </div>
+  </div>
+</div>
+
+{{#with restaurant}}
+
+<script> 
+L.marker([{{latitude}}, {{longitude}}]).addTo(map).bindPopup("<p><strong>{{name}}</strong></p><p>{{tel}}</p><p>{{cuisine_type}}</p><p>{{address}}</p>") 
+
+$('#dish-title').delay(2000).fadeOut(2000, function() {
+
+  });
+
+$('a[href*=#]:not([href=#])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+        || location.hostname == this.hostname) {
+
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+           if (target.length) {
+             $('html,body').animate({
+                 scrollTop: target.offset().top
+            }, 800);
+            return false;
+        }
+    }
+});
+
+
+</script>
+
+  {{/with}}
+{{/with}}

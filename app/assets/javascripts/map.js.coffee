@@ -1,5 +1,11 @@
 $ ->
-  window.map = L.map('map').setView([22.2783, 114.1589], 16)
+  # window.map = L.map('map').setView([22.2783, 114.1589], 16)
+
+  window.map = L.map('map', {
+      center: [22.2783, 114.1589],
+      zoom: 16,
+      scrollWheelZoom: false
+  });
 
 
   L.tileLayer('http://{s}.tile.cloudmade.com/db707e051f3446dd91dd75120aac2b5a/116065/256/{z}/{x}/{y}.png', {

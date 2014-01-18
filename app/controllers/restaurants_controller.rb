@@ -1,4 +1,5 @@
 class RestaurantsController < ApplicationController
+  before_action :get_restaurant, only: [ :edit, :update, :destroy ]
 
   respond_to :json
 
@@ -11,36 +12,30 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    @restaurant = Restaurant.new(restaurant_params)
+    @restaurant = Restaurant.new( restaurant_params )
 
     if @restaurant.save
-      redirect_to curated_posts_new_url
+      redirect_to new_curated_post_path
     else
       head :unprocessable_entity
     end
   end  
 
   def update
-    @restaurant = Restaurant.where('id = ?', params[:id]).take
-    
-    if @restaurant
-      if @restaurant.update(post_params)
-        head :ok
-      else
-        head :unprocessable_entity
-      end
-    else head :not_found
-    end
+    head( @restaurant.update(post_params) ? :ok : :unprocessable_entity )
   end
 
   def destroy
-    render text: "Destroying restaurant #" + params[:id]
-    @restaurant.destroy if @restaurant = Restaurant.where('id = ?', params[:id]).take
+    @restaurant.destroy
 
     head :no_content
   end 
 
   private
+
+  def get_restaurant
+    head :not_found unless @restaurant = Restaurant.where('id = ?', params[:id]).take
+  end
 
   def restaurant_params
     params.require(:restaurant).permit( :name, :price_range, :cuisine_type, :address, :tel, :latitude, :longitude, :url)

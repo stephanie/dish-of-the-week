@@ -1,0 +1,63 @@
+{{#with curated_post}}
+<span id="topofpage"></span>
+<button id="second-page-link-box">
+  <a href="#restaurant-info" id="second-page-link">LEARN MORE ABOUT THIS DISH @ {{restaurant.name}}</a>
+</button>
+
+<div id="votes-box-container">
+  <div id="votes-box">
+    <div id="dish-logo">
+      DISH!
+    </div>
+    <button id="tried-btn" data-id="{{id}}"><span id="tried-count">{{up_vote}}</span> TRIED THIS</button>
+    <br />
+    <button id="liked-btn" data-id="{{id}}"><span id="liked-count">{{down_vote}}</span> LIKED THIS</button>
+    <div id="clicked">0</div>
+  </div>
+</div>
+  {{#with restaurant}}
+    <button id="submission-btn" data-toggle="modal" data-target="#myModal" data-id="{{id}}">
+      HAVE ANOTHER FAVORITE DISH AT THIS RESTAURANT?
+    </button>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Recommend a dish at {{name}}</h4>
+          </div>
+          <div class="modal-body">
+            <form id="submission-form">
+              <input id="full-name" type="text" class="form-control" placeholder="Your full name">
+              </br>
+              <input id="dish-name" type="text" class="form-control" placeholder="Dish name">
+              </br>
+              <textarea id="dish-description" rows="8" class="form-control" placeholder="Dish description"></textarea>
+              </br>
+              <input id="blog-link" type="text" class="form-control" placeholder="Blog link (optional)">
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="button" id="submission-submit-btn" class="btn btn-primary" data-id="{{id}}">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/with}}
+{{/with}}
+
+<script>
+
+$(document).ready(function() {
+  $('#submission-btn').hide();
+  $('#second-page-link-box').hide();
+  $('#votes-box').hide();
+  $('#submission-btn').delay(4000).fadeIn(2000);
+  $('#second-page-link-box').delay(4000).fadeIn(2000);
+  $('#votes-box').delay(4000).fadeIn(2000);
+
+});
+
+</script>

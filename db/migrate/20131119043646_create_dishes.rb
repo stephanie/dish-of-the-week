@@ -3,12 +3,12 @@ class CreateDishes < ActiveRecord::Migration
     create_table :dishes do |t|
       t.references :restaurant, index: true
       t.string :type
-      t.string :dish_name
+      t.string :dish_name, index: true
       t.text :dish_description
-      t.string :price
+      t.string :price, index: true
       t.string :blog_link
       t.boolean :is_accepted, :default => false
-      t.string :published_on
+      t.string :published_on, index: true
       t.integer :up_vote, :default => 0
       t.integer :down_vote, :default => 0
       t.string :restaurant_id
