@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 20131125075839) do
     t.string   "blog_link"
     t.boolean  "is_accepted",      default: false
     t.string   "published_on"
-    t.integer  "up_vote"
-    t.integer  "down_vote"
+    t.integer  "up_vote",          default: 0
+    t.integer  "down_vote",        default: 0
     t.string   "full_name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20131125075839) do
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
-    t.integer  "tel"
+    t.string   "tel"
     t.string   "cuisine_type"
     t.string   "price_range"
     t.string   "url"
