@@ -3,7 +3,7 @@ class DishesController < ApplicationController
 
   def index
     respond_to do |format|
-      format.html {
+      format.json {
         @dishes = if @restaurant
           params[:id] ? @restaurant.dishes.find('id in (?)', params[:id].split(",")) : @restaurant.dishes
         else 

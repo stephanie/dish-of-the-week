@@ -25,6 +25,8 @@ $ ->
   tried_counter = 0
   liked_counter = 0
 
+  console.log tried_counter
+
   $('div').on 'click', '#tried-btn', (e) ->
     id = $(@).data('id')
     upvote = parseInt($('#tried-count').html()) + 1
@@ -47,25 +49,26 @@ $ ->
         error: (x,y,z) -> console.log(x,y,z)
 
   $('div').on 'click', '#liked-btn', (e) ->
-    id = $(@).data('id')
-    downvote = parseInt($('#liked-count').html()) + 1
+    if (tried_counter > 0)
+      id = $(@).data('id')
+      downvote = parseInt($('#liked-count').html()) + 1
 
-    liked_counter++
-    $('#clicked').text(liked_counter)
+      liked_counter++
+      $('#clicked').text(liked_counter)
 
-    if (liked_counter < 2)
-      $.ajax "/api/curated_posts/#{id}",
-        type: 'PATCH',
-        contentType: 'application/json',
-        data: JSON.stringify({ 
-          curated_post: { 
-            down_vote: downvote,
-          },
-        }),
-        success: (data) ->
-          current = parseInt($('#liked-count').html()) 
-          $('#liked-count').html(current + 1)
-        error: (x,y,z) -> console.log(x,y,z)
+      if (liked_counter < 2)
+        $.ajax "/api/curated_posts/#{id}",
+          type: 'PATCH',
+          contentType: 'application/json',
+          data: JSON.stringify({ 
+            curated_post: { 
+              down_vote: downvote,
+            },
+          }),
+          success: (data) ->
+            current = parseInt($('#liked-count').html()) 
+            $('#liked-count').html(current + 1)
+          error: (x,y,z) -> console.log(x,y,z)
 
   $('div').on 'click', '#submission-submit-btn', (e) ->
     id = $(@).data('id')
@@ -88,7 +91,8 @@ $ ->
           restaurant_id: id
         },
       }),
-      success: (e) -> console.log(e),
+      success: (data) -> 
+        $('#myModal .close').click()
       error: (x,y,z) -> console.log(x,y,z)
 
   showSubmissionPage '/api/curated_posts/random', Handlebars.templates.submission
