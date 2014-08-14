@@ -17,12 +17,12 @@ $ ->
   # marker = L.marker([22.2783, 114.1589]).addTo(map)
   # marker.bindPopup("<a href='#' id='bus-1-marker'>Hi WDI!</a>").openPopup
 
-  window.find_me = ->
-    map.locate({setView: false, maxZoom: 13, watch: true})
+  # window.find_me = ->
+  #   map.locate({setView: false, maxZoom: 13, watch: true})
 
-  onLocationFound = (e) ->
-    radius = e.accuracy / 2
-    # L.marker(e.latlng).addTo(map).bindPopup("You're here")
-    L.circle(e.latlng, radius).bindPopup("You're here").addTo(map)
+  # onLocationFound = (e) ->
+  #   radius = e.accuracy / 2
+  #   # L.marker(e.latlng).addTo(map).bindPopup("You're here")
+  #   L.circle(e.latlng, radius).bindPopup("You're here").addTo(map)
 
-  map.on('locationfound', onLocationFound);;';'
+  # map.on('locationfound', onLocationFound);;';'

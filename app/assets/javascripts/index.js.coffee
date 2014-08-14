@@ -22,19 +22,17 @@ $ ->
         success: (data) ->
           $('#map-content').html(templateFunc(data))
 
-  counter = 0
+  tried_counter = 0
+  liked_counter = 0
 
   $('div').on 'click', '#tried-btn', (e) ->
     id = $(@).data('id')
-    console.log id
     upvote = parseInt($('#tried-count').html()) + 1
-    console.log upvote
 
-    counter++
-    $('#clicked').text(counter)
-    console.log counter
+    tried_counter++
+    $('#clicked').text(tried_counter)
 
-    if (counter < 2)
+    if (tried_counter < 2)
       $.ajax "/api/curated_posts/#{id}",
         type: 'PATCH',
         contentType: 'application/json',
@@ -46,20 +44,16 @@ $ ->
         success: (data) ->
           current = parseInt($('#tried-count').html()) 
           $('#tried-count').html(current + 1)
-          console.log current
         error: (x,y,z) -> console.log(x,y,z)
 
   $('div').on 'click', '#liked-btn', (e) ->
     id = $(@).data('id')
-    console.log id
     downvote = parseInt($('#liked-count').html()) + 1
-    console.log downvote
 
-    counter++
-    $('#clicked').text(counter)
-    console.log counter
+    liked_counter++
+    $('#clicked').text(liked_counter)
 
-    if (counter < 2)
+    if (liked_counter < 2)
       $.ajax "/api/curated_posts/#{id}",
         type: 'PATCH',
         contentType: 'application/json',
@@ -71,23 +65,16 @@ $ ->
         success: (data) ->
           current = parseInt($('#liked-count').html()) 
           $('#liked-count').html(current + 1)
-          console.log current
         error: (x,y,z) -> console.log(x,y,z)
 
   $('div').on 'click', '#submission-submit-btn', (e) ->
     id = $(@).data('id')
     name = $(@).data('restaurant')
-    console.log 'clicked'
 
     full_name = $('input#full-name').val()
     dish_name = $('input#dish-name').val()
     dish_description = $('textarea#dish-description').val()
     blog_link = $('input#blog-link').val()
-
-    console.log dish_name
-    console.log dish_description
-    console.log blog_link
-    console.log full_name
 
     $.ajax "/api/restaurants/#{id}/submissions",
       type: 'POST',
